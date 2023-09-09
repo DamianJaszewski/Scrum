@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SJSnV2yp75YNpwvjXobUOHmwOmOvxiW11XjeqH08kWyYz2a9feGexNmfygCm7lOdLtieDCkWz8/lWXGSMM7JfQ==",
+  "dgSpecHash": "8cxPPtxpMs1j8GkpeImU/xR6g6BMaIny/4At/weZoEa+ppgVzzn4L/sxGS7+CnUPzFsssv7HYw5bK3HgOSHZGg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\oke\\source\\repos\\ScrumApp\\ScrumEfCore\\ScrumEfCore\\ScrumEfCore.csproj",
+  "projectFilePath": "C:\\Users\\oke\\source\\repos\\ScrumApp\\scrum-backend\\ScrumEfCore\\ScrumEfCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\oke\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\oke\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

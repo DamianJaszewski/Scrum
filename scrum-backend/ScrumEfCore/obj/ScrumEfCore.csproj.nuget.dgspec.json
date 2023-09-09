@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oke\\source\\repos\\ScrumApp\\ScrumEfCore\\ScrumEfCore\\ScrumEfCore.csproj": {}
+    "C:\\Users\\oke\\source\\repos\\ScrumApp\\scrum-backend\\ScrumEfCore\\ScrumEfCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oke\\source\\repos\\ScrumApp\\ScrumEfCore\\ScrumEfCore\\ScrumEfCore.csproj": {
+    "C:\\Users\\oke\\source\\repos\\ScrumApp\\scrum-backend\\ScrumEfCore\\ScrumEfCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oke\\source\\repos\\ScrumApp\\ScrumEfCore\\ScrumEfCore\\ScrumEfCore.csproj",
+        "projectUniqueName": "C:\\Users\\oke\\source\\repos\\ScrumApp\\scrum-backend\\ScrumEfCore\\ScrumEfCore.csproj",
         "projectName": "ScrumEfCore",
-        "projectPath": "C:\\Users\\oke\\source\\repos\\ScrumApp\\ScrumEfCore\\ScrumEfCore\\ScrumEfCore.csproj",
+        "projectPath": "C:\\Users\\oke\\source\\repos\\ScrumApp\\scrum-backend\\ScrumEfCore\\ScrumEfCore.csproj",
         "packagesPath": "C:\\Users\\oke\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oke\\source\\repos\\ScrumApp\\ScrumEfCore\\ScrumEfCore\\obj\\",
+        "outputPath": "C:\\Users\\oke\\source\\repos\\ScrumApp\\scrum-backend\\ScrumEfCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
