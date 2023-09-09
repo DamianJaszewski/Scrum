@@ -24,7 +24,7 @@ Na interfejsie zostały zaimplementowane widoki sprintu oraz logowania i rejestr
   
 ## Przykład kodu
 * Dodanie routingu do aplikacji z wykorzystaniem react-router-dom z odnośnikami do odpowiednich komponentów.
-```react
+```JSX
 <BrowserRouter>
     <Navbar />
     <Routes>
@@ -48,7 +48,7 @@ Na interfejsie zostały zaimplementowane widoki sprintu oraz logowania i rejestr
 </BrowserRouter>
 ```
 * Wyświetlanie zadań w Backlogu:
-```react
+```JSX
    {(tasks.length !== 0)
             ? tasks.map((task) => (
               <tr>
