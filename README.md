@@ -9,9 +9,6 @@
 * [Dokumentacja](#Dokumentacja)
 * [Technologia](#Technologie)
 * [Przykład kodu](#Przykład-kodu)
-* [Funkcjonalności](#Funkcjonalności)
-* [Status](#Status)
-* [Kontakt](#kontakt)
   
 ## Informacje ogólne
 Aplikacja pozwala wykonywać operacje CRUD na zadaniach w celu stworzenia listy zadań w Backlogu.
@@ -22,59 +19,66 @@ Na interfejsie zostały zaimplementowane widoki sprintu oraz logowania i rejestr
 ![menu](./jpg/Login.png)
 
 ## Technologie
-* Angular 12.0.0.
+* React
+* .Net
   
 ## Przykład kodu
-* Pobieranie danych:
-```ruby
-url = 'http://flashcardsdj.azurewebsites.net/api/Flashcard/GetList';
-
-  FlashcardsAngular: any=[];
-  
-  constructor(private http: HttpClient){
-  }
-
-  ngOnInit(){
-    this.FlashcardsAngular = this.http.get(this.url)
-      .subscribe(data=>{
-        this.FlashcardsAngular=data;
-      })
-    return this.FlashcardsAngular;
-  }
-```
-* Wyświetlanie fiszek:
-```ruby
-  <div class="d-flex justify-content-center" style="margin-top: 80px;">
-      <div>
-        <div class="d-flex justify-content-center"><h3 id="category">{{FlashcardsAngular[0].Category}}</h3></div>
-      <div class="card" style="width:400px; min-height: 250px;">
-        <div class="card-body" style="visibility: visible;" id="card">
-          <p>Pytanie nr <a id="id">{{FlashcardsAngular[0].Id}}</a></p>
-          <h5 id="question" class="card-title">{{FlashcardsAngular[0].Question}}</h5>
-          
-          <button (click)="showAnswer()" class="btn btn-primary" >Pokaż odpowiedź</button>
-
-          <p class="card-text" style="visibility:hidden;" id="answer">{{FlashcardsAngular[0].Answer}}</p>
-
-        </div>
-      </div>
-      <div class="d-flex justify-content-center" style="margin-top: 10px;" id="buttons">
-          <button (click) ="remember()" type="button" class="btn btn-success" style="margin-right: 30px; width:150px;">Zapamiętane</button>
-          <button (click) ="nextQuestion()" type="button" class="btn btn-danger" style="width: 150px;">Na później</button>
-          
-      </div>
-      <div class="justify-content-center" style="text-align: center; visibility: hidden;" id="win">
-      <hr />
-          <p>Gratulacje! materiał opanowany!</p>
-        </div>
-    </div>
+* Dodanie routingu do aplikacji z wykorzystaniem react-router-dom z odnośnikami do odpowiednich komponentów.
+```react
+<BrowserRouter>
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<Backlog/>}/>
+    </Routes>
+    <Routes>
+      <Route path="/sprint" element={<Sprint/>}/>
+    </Routes>
+    <Routes>
+      <Route path="/retro" element={<Retro/>}/>
+    </Routes>
+    <Routes>
+      <Route path="/login" element={<Login/>}/>
+    </Routes>
+    <Routes>
+      <Route path="/Signup" element={<Signup/>}/>
+    </Routes>
+  <div class="footer">
+    <Footer />
   </div>
+</BrowserRouter>
+```
+* Wyświetlanie zadań w Backlogu:
+```react
+   {(tasks.length !== 0)
+            ? tasks.map((task) => (
+              <tr>
+                <th key={task.id} scope="row">{task.id}</th>
+                <td>
+                  <input type="text" placeholder={task.title} name="title" onChange={handleChange}/>
+                </td>
+                <td>{task.content}</td>
+                <td>{task.status}</td>
+                <td>not set</td>
+                <td>{task.storyPoint}</td>
+                <td>
+                  <button onClick={()=>editTask(task.id)} className="btn btn-success">
+                    Edit
+                  </button>
+                </td>
+                <td>
+                  <button onClick={()=>deleteTask(task.id)} className="btn btn-success">
+                    Del
+                  </button>
+                </td>
+              </tr>
+            ))
+            :<div class="d-flex justify-content-center">
+              <font color="red">Something went wrong</font>
+            </div>
+            }
 ```
 
 ## Funkcjonalności
-* Applikacja umożliwia wyświetlanie fiszek z bazy danych.
-* Aplikacja umożliwia wybór kategorii - funkcja w trakcie wdrażania.
-* Aplikacja umożliwia wyświetlenie właściwej odpowiedzi.
 * Aplikacja umożliwia ukrycie fiszki po naciśnięciu przycisku "Zapamiętane".
 * Aplikacja wyświetla kolejną fiszkę po naciśnięciu przycisku "Na później".
 * wyswietlenie pogody dla wprowadzonego miasta
