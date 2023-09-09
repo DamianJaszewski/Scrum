@@ -1,0 +1,26 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/scrum-frontend/node_modules
+/scrum-frontend/.pnp
+/scrum-frontend.pnp.js
+
+# testing
+/scrum-frontend/coverage
+
+# production
+/scrum-frontend/build
+
+# misc
+/scrum-frontend/.DS_Store
+/scrum-frontend/.env.local
+/scrum-frontend/.env.development.local
+/scrum-frontend/.env.test.local
+/scrum-frontend/.env.production.local
+
+/scrum-frontend/npm-debug.log*
+/scrum-frontend/yarn-debug.log*
+/scrum-frontend/yarn-error.log*
+
+#csharp
+/scrum-backend/.vs
