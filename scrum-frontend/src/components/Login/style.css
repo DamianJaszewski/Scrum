@@ -1,11 +1,18 @@
 .my-box{
-    display: flex;
-    justify-content: center;
+    width: 30%;
+    margin: 0 auto; /* Wyrodkowanie w poziomie */
+    display: flex; /* Używanie flexbox do wyrodkowania w pionie */
+    justify-content: center; /* Wyrodkowanie w poziomie */
     background: #F9F9F9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
-    margin-left: 8%;
-    margin-right: 8%;
-    padding: 40px;
+    padding: 20px;
     margin-bottom: 50px;
 }
+
+@media screen and (max-width: 767px) {
+    /* Media query dla ekranów o szerokości do 767px (mobilne) */
+    .my-box {
+      width: 80%; /* Szerokość dla ekranów mobilnych */
+    }
+  }
