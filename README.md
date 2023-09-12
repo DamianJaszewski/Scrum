@@ -1,40 +1,40 @@
 # Scrum App
-  Prototyp aplikacji do zarządzania zadaniami na podstawie zwinnej metodyki Scrum. <br>
-  Do utworzenia aplikacji zostały wykorzystane następujące technologie: <br>
-  * Backend - .Net Rest API
-  * Frontend - React
+A prototype application for managing tasks based on the agile Scrum methodology. <br>
+The following technologies were used to create the application: <br>
+* Backend - .Net Rest API
+* Frontend - React
     
-## Spis treści
-* [Informacje ogólne](#Informacje-ogólne)
-* [Dokumentacja](#Dokumentacja)
-* [Technologia](#Technologie)
-* [Przykład kodu](#Przykład-kodu)
-* [Wymagania](#Wymagania)
+## Table of Contents
+* [General Information](#General-Information)
+* [Documentation](#Documentation)
+* [Technologies](#Technologies)
+* [Code Example](#Code-Example)
+* [Requirements](#Requirements)
   
-## Informacje ogólne
-Aplikacja pozwala wykonywać operacje CRUD na zadaniach w celu stworzenia listy zadań w Backlogu.
-Na interfejsie zostały zaimplementowane widoki sprintu oraz logowania i rejestracji.
+## General Information
+The application allows performing CRUD operations on tasks to create a backlog of tasks.   
+The interface includes views for sprints, as well as login and registration.
 
-## Dokumentacja
-Widok ekranu Rejestru Produktu
+## Documentation
+View of the Product Backlog screen
 ![flashcard](./jpg/Backlog.png)<br>
-Widok ekranu logowania
+Login screen view
 ![menu](./jpg/Login.png)<br>
-Diagram związków encji.<br>
+Entity relationship diagram (ERD).<br>
 ![erd](./jpg/erd.png)
 
-## Technologie
+## Technologies
 Frontend - React   
-Backend -.Net Web API   
+Backend - .Net Web API   
 Backend Framework - .NET 6   
-Wykorzystana baza - lokalna Ms SQL   <br><br>
-Użyte paczki:
+Used database - local Ms SQL   <br><br>
+Used packages:
 * Microsoft.EntityFrameworkCore.Design
 * Microsoft.EntityFrameworkCore.SqlServer
-* Microsoft.EntityFrameworkCore 
+* Microsoft.EntityFrameworkCore
   
-## Przykład kodu
-* Metoda GetAll w kontrolerze TaskController
+## Code Example
+* GetAll method in the TaskController
 ```csharp
 [HttpGet]
 public async Task<ActionResult<List<ScrumTask>>> Get()
@@ -45,7 +45,7 @@ public async Task<ActionResult<List<ScrumTask>>> Get()
     return Ok(result);
 }
 ```
-* Metoda GetById w kontrolerze TaskController
+* GetById method in the TaskController
 ```csharp
 [HttpGet("{id}")]
 public async Task<ActionResult<List<ScrumTask>>> Get(int id)
@@ -53,11 +53,11 @@ public async Task<ActionResult<List<ScrumTask>>> Get(int id)
     var task = await _dataContext.ScrumTask.FindAsync(id);
 
     if (task == null) return BadRequest("Task not found");
-   
+
     return Ok(task);
 }
 ```
-* Metoda Add w kontrolerze TaskController
+* Add method in the TaskController
 ```csharp
 [HttpPost]
 public async Task<ActionResult<List<ScrumTask>>> AddTask(ScrumTask task)
@@ -68,7 +68,7 @@ public async Task<ActionResult<List<ScrumTask>>> AddTask(ScrumTask task)
     return Ok(await _dataContext.ScrumTask.ToListAsync());
 }
 ```
-* Metoda Update w kontrolerze TaskController
+* Update method in the TaskController
 ```csharp
 [HttpPut("{id}")]
 public async Task<ActionResult<List<ScrumTask>>> UpdateTask(int id, ScrumTask request)
@@ -84,7 +84,7 @@ public async Task<ActionResult<List<ScrumTask>>> UpdateTask(int id, ScrumTask re
     return Ok(await _dataContext.ScrumTask.ToListAsync());
 }
 ```
-* Dodanie routingu do aplikacji z wykorzystaniem react-router-dom z odnośnikami do odpowiednich komponentów.
+* Adding routing to the application using react-router-dom with links to the respective components.
 ```JSX
 <BrowserRouter>
     <Navbar />
@@ -108,7 +108,7 @@ public async Task<ActionResult<List<ScrumTask>>> UpdateTask(int id, ScrumTask re
   </div>
 </BrowserRouter>
 ```
-* Wyświetlanie zadań w Backlogu:
+* Displaying tasks in the Backlog:
 ```JSX
    {(tasks.length !== 0)
       ? tasks.map((task) => (
@@ -139,7 +139,7 @@ public async Task<ActionResult<List<ScrumTask>>> UpdateTask(int id, ScrumTask re
   }
 ```
 
-## Wymagania
-* Zarządzanie zadaniami w Rejestrze Produktu - aplikacja umożliwia tworzenie, edycję i usuwanie zadań.
-* Aplikacja umożliwia określenie priorytetów dla zadań i śledzenia ich postępu.
-* Rejestr Produktu zawiera wymagania w postaci historyjki użytkownika, priorytet, status, podsumowanie oraz wagę wyrażoną w postaci punktów (ang. story points).
+## Requirements
+* Product Backlog Management - the application allows creating, editing, and deleting tasks.
+* The application allows defining priorities for tasks and tracking their progress.
+* The Product Backlog contains requirements in the form of user stories, priority, status, summary, and weight expressed in story points.
