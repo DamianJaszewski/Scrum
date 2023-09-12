@@ -9,18 +9,31 @@
 * [Dokumentacja](#Dokumentacja)
 * [Technologia](#Technologie)
 * [Przykład kodu](#Przykład-kodu)
+* [Wymagania](#Wymagania)
   
 ## Informacje ogólne
 Aplikacja pozwala wykonywać operacje CRUD na zadaniach w celu stworzenia listy zadań w Backlogu.
 Na interfejsie zostały zaimplementowane widoki sprintu oraz logowania i rejestracji.
 
 ## Dokumentacja
+Widok ekranu Rejestru Produktu
 ![flashcard](./jpg/Backlog.png)
+Widok ekranu logowania
 ![menu](./jpg/Login.png)
+Diagram związków encji.
+![erd](./jpg/erd.png)
 
 ## Technologie
-* React
-* .Net
+* Backend -.Net Web API
+* Frontend - React <br>
+
+1. Backend:
+* Framework - .NET 6
+* Wykorzystana baza - lokalna Ms SQL
+Użyte paczki:
+* Microsoft.EntityFrameworkCore.Design
+* Microsoft.EntityFrameworkCore.SqlServer
+* Microsoft.EntityFrameworkCore 
   
 ## Przykład kodu
 * Dodanie routingu do aplikacji z wykorzystaniem react-router-dom z odnośnikami do odpowiednich komponentów.
@@ -78,7 +91,7 @@ Na interfejsie zostały zaimplementowane widoki sprintu oraz logowania i rejestr
             }
 ```
 
-## Funkcjonalności
-* Aplikacja umożliwia ukrycie fiszki po naciśnięciu przycisku "Zapamiętane".
-* Aplikacja wyświetla kolejną fiszkę po naciśnięciu przycisku "Na później".
-* wyswietlenie pogody dla wprowadzonego miasta
+## Wymagania
+* Zarządzanie zadaniami w Rejestrze Produktu - aplikacja umożliwia tworzenie, edycję i usuwanie zadań.
+* Aplikacja umożliwia określenie priorytetów dla zadań i śledzenia ich postępu.
+* Rejestr Produktu zawiera wymagania w postaci historyjki użytkownika, priorytet, status, podsumowanie oraz wagę wyrażoną w postaci punktów (ang. story points).
