@@ -17,25 +17,73 @@ Na interfejsie zostały zaimplementowane widoki sprintu oraz logowania i rejestr
 
 ## Dokumentacja
 Widok ekranu Rejestru Produktu
-![flashcard](./jpg/Backlog.png)
+![flashcard](./jpg/Backlog.png)<br>
 Widok ekranu logowania
-![menu](./jpg/Login.png)
-Diagram związków encji.
+![menu](./jpg/Login.png)<br>
+Diagram związków encji.<br>
 ![erd](./jpg/erd.png)
 
 ## Technologie
-* Backend -.Net Web API
-* Frontend - React <br>
-
-1. Backend:
-* Framework - .NET 6
-* Wykorzystana baza - lokalna Ms SQL
+Frontend - React   
+Backend -.Net Web API   
+Backend Framework - .NET 6   
+Wykorzystana baza - lokalna Ms SQL   <br><br>
 Użyte paczki:
 * Microsoft.EntityFrameworkCore.Design
 * Microsoft.EntityFrameworkCore.SqlServer
 * Microsoft.EntityFrameworkCore 
   
 ## Przykład kodu
+* Metoda GetAll w kontrolerze TaskController
+```csharp
+[HttpGet]
+public async Task<ActionResult<List<ScrumTask>>> Get()
+{
+    var tasks = await _dataContext.ScrumTask.ToListAsync();
+    var result = tasks.OrderByDescending(x => x.Id);
+
+    return Ok(result);
+}
+```
+* Metoda GetById w kontrolerze TaskController
+```csharp
+[HttpGet("{id}")]
+public async Task<ActionResult<List<ScrumTask>>> Get(int id)
+{
+    var task = await _dataContext.ScrumTask.FindAsync(id);
+
+    if (task == null) return BadRequest("Task not found");
+   
+    return Ok(task);
+}
+```
+* Metoda Add w kontrolerze TaskController
+```csharp
+[HttpPost]
+public async Task<ActionResult<List<ScrumTask>>> AddTask(ScrumTask task)
+{
+    _dataContext.ScrumTask.Add(task);
+    await _dataContext.SaveChangesAsync();
+
+    return Ok(await _dataContext.ScrumTask.ToListAsync());
+}
+```
+* Metoda Update w kontrolerze TaskController
+```csharp
+[HttpPut("{id}")]
+public async Task<ActionResult<List<ScrumTask>>> UpdateTask(int id, ScrumTask request)
+{
+    var task = await _dataContext.ScrumTask.FindAsync(id);
+    if (task == null) return BadRequest("Task not found");
+
+    request.Id = id;
+    _dataContext.Entry(task).CurrentValues.SetValues(request);
+
+    await _dataContext.SaveChangesAsync();
+
+    return Ok(await _dataContext.ScrumTask.ToListAsync());
+}
+```
 * Dodanie routingu do aplikacji z wykorzystaniem react-router-dom z odnośnikami do odpowiednich komponentów.
 ```JSX
 <BrowserRouter>
@@ -63,32 +111,32 @@ Użyte paczki:
 * Wyświetlanie zadań w Backlogu:
 ```JSX
    {(tasks.length !== 0)
-            ? tasks.map((task) => (
-              <tr>
-                <th key={task.id} scope="row">{task.id}</th>
-                <td>
-                  <input type="text" placeholder={task.title} name="title" onChange={handleChange}/>
-                </td>
-                <td>{task.content}</td>
-                <td>{task.status}</td>
-                <td>not set</td>
-                <td>{task.storyPoint}</td>
-                <td>
-                  <button onClick={()=>editTask(task.id)} className="btn btn-success">
-                    Edit
-                  </button>
-                </td>
-                <td>
-                  <button onClick={()=>deleteTask(task.id)} className="btn btn-success">
-                    Del
-                  </button>
-                </td>
-              </tr>
-            ))
-            :<div class="d-flex justify-content-center">
-              <font color="red">Something went wrong</font>
-            </div>
-            }
+      ? tasks.map((task) => (
+        <tr>
+          <th key={task.id} scope="row">{task.id}</th>
+          <td>
+            <input type="text" placeholder={task.title} name="title" onChange={handleChange}/>
+          </td>
+          <td>{task.content}</td>
+          <td>{task.status}</td>
+          <td>not set</td>
+          <td>{task.storyPoint}</td>
+          <td>
+            <button onClick={()=>editTask(task.id)} className="btn btn-success">
+              Edit
+            </button>
+          </td>
+          <td>
+            <button onClick={()=>deleteTask(task.id)} className="btn btn-success">
+              Del
+            </button>
+          </td>
+        </tr>
+      ))
+      :<div class="d-flex justify-content-center">
+        <font color="red">Something went wrong</font>
+      </div>
+  }
 ```
 
 ## Wymagania
